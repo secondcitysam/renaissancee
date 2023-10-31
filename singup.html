@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+     <meta http-equiv="X-UA-comatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+     <title>Responsive Registration Form</title>
+     <link rel="stylesheet" href="signupcss.css">
+    
+    </head>
+<body>
+    <div class="container">
+    <div class="title">Registration</div>
+    <form action="#">
+    <div class="user-deatils">
+
+
+         <div class="input-box">
+         <span class="deatils">Full name</span>
+        <input type="text" placeholder="Enter your name " required>
+      
+     </div>
+
+     <div class="input-box">
+        <span class="deatils">Username</span>
+       <input type="text" placeholder="Enter your Username " required>
+     
+    </div>
+
+    <div class="input-box">
+        <span class="deatils">Email</span>
+       <input type="text" placeholder="Enter your email " required>
+     
+    </div>
+
+    <div class="input-box">
+        <span class="deatils">Phone Number</span>
+       <input type="text" placeholder="Enter your Number " required>
+    
+    </div>
+
+    <div class="input-box">
+        <span class="deatils">Password</span>
+       <input type="text" placeholder="Enter your Password " required>
+     
+    </div>
+
+    <div class="input-box">
+        <span class="deatils">Confirm Password</span>
+       <input type="text" placeholder="Confirm your password" required>
+     
+    </div>
+    </div>
+   
+    <div class="gender-deatils">
+        <input type="radio" name="genader" id="dot-1">
+        <input type="radio" name="genader" id="dot-2">
+        <input type="radio" name="genader" id="dot-3">
+        <span class="gender-title">Gender</span>
+        <div class="category">
+                       <label for="dot-1">
+                <span class="dot one"></span>
+                <span class="gender">Male</span>
+                </label>   
+            
+                <label for="dot-2">
+                <span class="dot two"></span>
+                <span class="gender">female</span>
+                </label>   
+            
+        
+            <label for="dot-3">
+                <span class="dot three"></span>
+                <span class="gender">other</span>
+                </label>   
+            </div>
+        </div>
+    
+    <div class="button">
+            <input type="submit" value="Register">
+            
+
+
+        </div>
+    </div>
+</form>    
+
+</div>
+<script>
+     document.addEventListener("DOMContentLoaded", function() {
+            const fullNameInput = document.getElementById("fullName");
+            const registrationForm = document.querySelector("form");
+
+       
+
+            // Function to check if a string is a valid email address
+            function isValidEmail(email) {
+                // You can add email validation logic here if needed
+                // For a basic check, you can use a regular expression.
+                // This is a simplified example; a proper email validation regex would be more robust.
+                const emailRegex = /\S+@\S+\.\S+/;
+                return emailRegex.test(email);
+            }
+
+            // Prevent the form from submitting
+            registrationForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+            });
+        });
+</script>
+
+    </body>
+    </html>          
+
+    
+    

@@ -1,0 +1,471 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order webpage</title>
+  <style>
+    body {
+    
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+      body{   
+    height: 100vh;
+    background-size: cover;
+    background-position:  center;
+    background-repeat: no-repeat;
+    }
+    }
+body{
+  background-image: url();
+  
+}
+    h1 {
+      margin-top: 0;
+      font-size: 28px;
+      /* color: #333; */
+      color: rgb(209, 116, 23);
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      margin-left: 38%;
+    }
+
+    label {
+      font-weight: bold;
+      margin-right: 10px;
+      /* color: #333; */
+      color: rgb(54, 43, 52);
+      display: inline-block;
+      width: 100px;
+    }
+
+    input[type="number"],
+    select {
+      width: 200px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: #ae0808;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-left: 38%;
+  
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    h2 {
+      font-size: 20px;
+      /* color: #333; */
+      color: rgb(14, 212, 50);
+      margin-bottom: 10px;
+      margin-left: 38%;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart-item-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-item-name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .cart-item-quantity {
+      color: #777;
+      margin-top: 5px;
+    }
+
+    .total-price {
+      font-size: 20px;
+      font-weight: bold;
+      /* color: #333; */
+      color: rgb(231, 241, 234);
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    .checkout-button {
+      margin-top: 30px;
+      display: block;
+      width: 20%;
+      
+    }
+
+    .checkout-button-container {
+      text-align: center;
+    }
+
+    /* Advanced CSS Concepts */
+
+    .form-group::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .form-group label {
+      float: left;
+      line-height: 32px;
+    }
+
+    .form-group input[type="number"],
+    .form-group select {
+      float: left;
+    }
+
+    .form-group input[type="number"] {
+      width: 160px;
+      margin-right: 20px;
+    }
+
+    .form-group select {
+      width: 200px;
+      margin-right: 20px;
+    }
+
+    .form-group input[type="number"]:last-of-type,
+    .form-group select:last-of-type {
+      margin-right: 0;
+    }
+
+    .cart-item-info {
+      flex-grow: 1;
+    }
+
+    .cart-item-quantity {
+      margin-top: 3px;
+      font-size: 14px;
+    }
+
+    .checkout-button {
+      padding: 14px 28px;
+      font-size: 18px;
+      margin-top: 40px;
+    }
+
+    .checkout-button:hover {
+      background-color: #45a049;
+    }
+
+    .checkout-button-container {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body >
+  <h1>THE MORE THE MERRIER</h1>
+
+  <div class="form-group">
+    <label for="item">Item:</label>
+    <input type="text" id="searchItem" placeholder="Shortlist item" onkeyup="searchItem()">
+  </div>
+
+  <div class="form-group">
+    <label for="item">Select an item:</label>
+    <select id="item" onchange="updatePrice()">
+      <option value="">Select the item</option>
+      
+    <option value="Poha" >Breakfast-Poha</option>
+    <option value="Dosa" >Breakfast-Dosa</option>
+    <option value="Idli" >Breakfast-Idli</option>
+    <option value="Pancakes" >Breakfast-Pancakes</option>
+    <option value="MeduWada" >Breakfast-Medu Wada</option>
+    <option value="Khichhdi" >Breakfast-Sabudana Khichhdi</option>
+    <option value="Wings">Lunch-Chicken Wings</option>
+     <option value="Chicken">Lunch-Butter Chicken</option>
+    <option value="Paneer">Lunch-Paneer Lababdar</option>
+     <option value="Dal">Lunch-DalMakhni</option> 
+    <option value="Tandoor">Lunch-ChickenTandoor</option> 
+     <option value="Fish">Lunch-FishCurry</option>
+    <option value="Veg">Lunch-VegThali</option>
+    <option value="Non-Veg">Lunch-Non VegThali</option>
+    <option value="Wings">Dinner-Chicken Wings</option>
+    <option value="Chicken">Dinner-Butter Chicken</option>
+   <option value="Paneer">Dinner-Paneer Lababdar</option>
+    <option value="Dal">Dinner-DalMakhni</option> 
+   <option value="Tandoor">Dinner-ChickenTandoor</option> 
+    <option value="Fish">Dinner-FishCurry</option>
+   <option value="Veg">Dinner-VegThali</option>
+   <option value="Non-Veg">Dinner-Non VegThali</option>
+   <option value="Naan">Naan</option>
+   <option value="Roti">Roti</option>
+   <option value="Rice">Rice</option>
+   <option value="Jrice">Jeera Rice</option>
+
+
+   <option value="Bhel">Bhel</option>
+   <option value="PaniPuri">PaniPuri</option>
+   <option value="VadaPav">VadaPav</option>
+   <option value="Pastry">Pastry</option>
+   <option value="PanCake">PanCake</option>
+   <option value="Chips">Chips</option>
+   <option value="FrenchFries">FrenchFries</option>
+   <option value="Samosa">Samosa</option>
+   <option value="Nachos">Nachos</option>
+   <option value="Mogito">Mogito</option>
+   <option value="OrangeJuice">OrangeJuice</option>
+   <option value="WhitePeachCoolerDrink">WhitePeachCoolerDrink</option>
+   <option value="LemonJuice">LemonJuice</option>
+   <option value="MangoJuice">MangoJuice</option>
+   <option value="Special_Ice_cream">Special_Ice_cream</option>
+   <option value="Creme_caramel">Creme_caramel</option>
+   <option value="Cheeze_Pastry">Cheeze_Pastry</option>
+   <option value="Choco_Cup_cake">Choco_Cup_cake</option>
+   <option value="Gulab_Jamun">Gulab_Jamun</option>
+   <option value="Red_Velvet_Ice_cream">Red_Velvet_Ice_cream</option>
+   <option value="Jello_Cup_cake">Jello_Cup_cake</option>
+   <option value="Cone_Ice_cream">Cone_Ice_cream</option>
+   <option value="Pavlova">Pavlova</option>
+   <option value="Strawberry_Ice_cream">Strawberry_Ice_cream</option>
+   <option value="Jalebi">Jalebi</option>
+   <option value="Kheer">Kheer</option>
+   <option value="Rasmalai">Rasmalai</option>
+   <option value="Rasgulla">Rasgulla</option>
+   <option value="Red-Bull">Red_Bull</option>
+   <option value="Coca-Cola">Coca-Cola</option>
+   <option value="Classic_Tea">Classic_Tea</option>
+   <option value="Mango_Juice">Mango_Juice</option>
+   <option value="Coffee">Coffee</option>
+   <option value="Strawberry_Juice">Strawberry_Juice</option>
+   <option value="Mogito_Juice">Mogito_Juice</option>
+   <option value="Lemon_Juice">Lemon_Juice</option>
+   <option value="Sprite">Sprite</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" placeholder="Quantity" min="1" value="1">
+  </div>
+
+  <div class="form-group">
+    <label for="price">Price:</label>
+    <input type="number" id="price" placeholder="Price" min="0" step="0.01" readonly>
+  </div>
+
+  <button onclick="addItemToCart()">Add to Cart</button>
+
+  <h2>Cart</h2>
+  <div id="cartItems"></div>
+
+  <p class="total-price">Total Price:  Rs <span id="totalPrice"></span></p>
+
+  <div class="checkout-button-container">
+    <button class="checkout-button" onclick="checkout()">Checkout</button>
+  </div>
+
+  <script>
+    const cartItemsElement = document.getElementById("cartItems");
+    const totalPriceElement = document.getElementById("totalPrice");
+
+    const cart = [];
+
+    const itemPrices = {
+     Poha: 25,
+      Dosa: 100,
+      Idli: 40,
+      Pancakes: 80,
+      MeduWada : 40,
+      Khichhdi: 40,
+      Wings:250,
+      Chicken:350,
+      Paneer: 300, 
+      Dal: 150,
+      Tandoor: 250,
+      Fish:300,
+      Veg:400,
+      NonVeg:500,
+      Naan:30,
+      Roti:20,
+      Rice:60,
+      Jrice:80,
+
+      Bhel:30,
+      PaniPuri:25,
+      VadaPav:10,
+      Pastry:25,
+      PanCake:80,
+      Chips:10,
+      FrenchFries:40,
+      Samosa:15,
+      Nachos:30,
+      Mogito:30,
+      OrangeJuice:20,
+      WhitePeachCoolerDrink:50,
+      LemonJuice:20,
+      MangoJuice:25,
+      Sprite:20,
+      SpecialIceCream:20,
+      Creme_Caramel:25,
+      Cheeze_Pastry:20,
+      Chocolate_Ice_cream:25,
+      Choco_Cup_cake:20,
+      Gulab_Jamun:40,
+      Red_Velvet_Cup_cake:15,
+      Jello_Cup_cake:20,
+      Cone_Ice_cream:10,
+      Pavlova:30,
+      Strawberry_Ice_cream:20,
+      Jalebi:30,
+      Kheer:40,
+      Rasgulla:45,
+      Rasmalai:50,
+      Red_Bull:35,
+      Coca_Cola:20,
+      Sprite:20,
+      Classic_Tea:15,
+      Mango_Juice:25,
+      Coffee:15,
+      Strawberry_Juice:25,
+      Mogito_Juice:40,
+      Lemon_Juice:15,
+    };
+
+    function updatePrice() {
+      const item = document.getElementById("item").value;
+      const priceInput = document.getElementById("price");
+
+      if (item && itemPrices[item]) {
+        priceInput.value = itemPrices[item].toFixed(2);
+      } else {
+        priceInput.value = "";
+      }
+    }
+
+    function addItemToCart
+
+() {
+      const item = document.getElementById("item").value;
+      const quantity = parseInt(document.getElementById("quantity").value);
+
+      if (!item || !quantity || quantity < 1) {
+        alert("Please select an item and enter a valid quantity.");
+        return;
+      }
+
+      const cartItem = { item, quantity };
+      cart.push(cartItem);
+
+      displayCart();
+      displayTotalPrice();
+    }
+
+    function displayCart() {
+      cartItemsElement.innerHTML = "";
+
+      for (let i = 0; i < cart.length; i++) {
+        const cartItem = cart[i];
+        const { item, quantity } = cartItem;
+
+        const cartItemElement = document.createElement("div");
+        cartItemElement.classList.add("cart-item");
+
+        const cartItemInfoElement = document.createElement("div");
+        cartItemInfoElement.classList.add("cart-item-info");
+
+        const cartItemNameElement = document.createElement("div");
+        cartItemNameElement.classList.add("cart-item-name");
+        cartItemNameElement.textContent = item;
+
+        const cartItemQuantityElement = document.createElement("div");
+        cartItemQuantityElement.classList.add("cart-item-quantity");
+        cartItemQuantityElement.textContent = `Quantity: ${quantity}`;
+
+        cartItemInfoElement.appendChild(cartItemNameElement);
+        cartItemInfoElement.appendChild(cartItemQuantityElement);
+
+        const removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.addEventListener("click", () => removeItemFromCart(i));
+
+        cartItemElement.appendChild(cartItemInfoElement);
+        cartItemElement.appendChild(removeButton);
+
+        cartItemsElement.appendChild(cartItemElement);
+      }
+    }
+
+    function displayTotalPrice() {
+      const totalPrice = calculateTotalPrice();
+      totalPriceElement.textContent = totalPrice.toFixed(2);
+    }
+
+    function calculateTotalPrice() {
+      let totalPrice = 0;
+
+      for (let i = 0; i < cart.length; i++) {
+        const cartItem = cart[i];
+        const { item, quantity } = cartItem;
+
+        if (itemPrices[item]) {
+          totalPrice += itemPrices[item] * quantity;
+        }
+      }
+
+      return totalPrice;
+    }
+
+    function removeItemFromCart(index) {
+      cart.splice(index, 1);
+      displayCart();
+      displayTotalPrice();
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty. Add items before checking out.");
+        return;
+      }
+
+      const totalPrice = calculateTotalPrice();
+      alert(`Checkout successful! Total price: Rs ${totalPrice.toFixed(2)}`);
+
+      cart.length = 0;
+      displayCart();
+      displayTotalPrice();
+    }
+
+    function searchItem() {
+      const searchValue = document.getElementById("searchItem").value.toLowerCase();
+      const itemSelect = document.getElementById("item");
+
+      for (let i = 0; i < itemSelect.options.length; i++) {
+        const optionText = itemSelect.options[i].text.toLowerCase();
+        if (optionText.includes(searchValue)) {
+          itemSelect.options[i].style.display = "";
+        } else {
+          itemSelect.options[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+</body>
+</html>
